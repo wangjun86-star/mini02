@@ -24,7 +24,7 @@ const Users = sequelize.define("userinfo",{
   openid:DataTypes.STRING,
   nickName:DataTypes.STRING,
   tel:DataTypes.String
-})
+});
 // 数据库初始化方法
 async function init() {
   await Counter.sync({ alter: true });
