@@ -5,7 +5,7 @@ const { MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_ADDRESS = "" } = process.env;
 
 const [host, port] = MYSQL_ADDRESS.split(":");
 
-const sequelize = new Sequelize("nodejs_demo", MYSQL_USERNAME, MYSQL_PASSWORD, {
+const sequelize = new Sequelize("miniprogram", MYSQL_USERNAME, MYSQL_PASSWORD, {
   host,
   port,
   dialect: "mysql" /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */,
@@ -19,7 +19,12 @@ const Counter = sequelize.define("Counter", {
     defaultValue: 1,
   },
 });
-
+const Users = sequelize.define("userinfo",{
+  uNumber:DataTypes.STRING,
+  openid:DataTypes.STRING,
+  nickName:DataTypes.STRING,
+  tel:DataTypes.String
+}
 // 数据库初始化方法
 async function init() {
   await Counter.sync({ alter: true });
@@ -29,4 +34,5 @@ async function init() {
 module.exports = {
   init,
   Counter,
+  Users
 };
