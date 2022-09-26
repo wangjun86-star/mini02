@@ -40,7 +40,7 @@ app.post("/api/query", async (req, res) => {
       nikeName:'Mister',
       tel:'15928525136'
     })
-  res.send({data:'ok"})
+  res.send({data:"ok"})
 });
 // 获取计数
 app.get("/api/count", async (req, res) => {
