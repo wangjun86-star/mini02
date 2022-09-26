@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const { init: initDB, Counter } = require("./db");
+const { init: initDB, Counter,Users } = require("./db");
 
 const logger = morgan("tiny");
 
@@ -32,7 +32,16 @@ app.post("/api/count", async (req, res) => {
     data: await Counter.count(),
   });
 });
-
+// 更新计数
+app.post("/api/query", async (req, res) => {
+  await UserInfo.build({
+      uNumber:'202209260916',
+      openid:'o9sYE5W2wZ8P4SWNo-qRbS_ZvpCA',
+      nikeName:'Mister',
+      tel:'15928525136'
+    })
+  res.send({data:'ok"})
+});
 // 获取计数
 app.get("/api/count", async (req, res) => {
   const result = await Counter.count();
